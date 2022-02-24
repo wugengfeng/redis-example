@@ -1,7 +1,7 @@
 package com.wgf.controller;
 
 import com.wgf.filter.bitmap.BitMapBloomFilter;
-import com.wgf.filter.bitmap.BitMapBloomFilterRegistry;
+import com.wgf.filter.registry.BitMapBloomFilterRegistry;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

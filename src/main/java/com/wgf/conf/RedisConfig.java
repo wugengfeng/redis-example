@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import com.wgf.filter.registry.BitMapBloomFilterRegistry;
 import com.wgf.filter.registry.BloomFilterRegistry;
 import com.wgf.filter.registry.CuckooFilterRegistry;
 import org.springframework.context.annotation.Bean;
@@ -25,10 +26,14 @@ public class RedisConfig {
         return new BloomFilterRegistry(redisTemplate);
     }
 
-
     @Bean
     public CuckooFilterRegistry cuckooFilterRegistry(RedisTemplate redisTemplate) {
         return new CuckooFilterRegistry(redisTemplate);
+    }
+
+    @Bean
+    public BitMapBloomFilterRegistry bitMapBloomFilterRegistry(RedisTemplate redisTemplate) {
+        return new BitMapBloomFilterRegistry(redisTemplate);
     }
 
     @Bean

@@ -1,7 +1,8 @@
-package com.wgf.filter.bitmap;
+package com.wgf.filter.registry;
 
 import com.google.common.hash.Funnel;
 import com.google.common.hash.Funnels;
+import com.wgf.filter.bitmap.BitMapBloomFilter;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.nio.charset.Charset;
@@ -47,7 +48,8 @@ public class BitMapBloomFilterRegistry {
 
     public BitMapBloomFilter<CharSequence> obtain(String filterName) {
         filterName = this.getFilterName(filterName);
-        BitMapBloomFilter<CharSequence> bitMapBloomFilter = filters.computeIfAbsent(filterName, key -> new BitMapBloomFilter<CharSequence>(redisTemplate,key, DEFAULT_EXPECTED_INSERTIONS));
+        BitMapBloomFilter<CharSequence> bitMapBloomFilter = filters.computeIfAbsent(filterName,
+                key -> new BitMapBloomFilter<CharSequence>(redisTemplate, key, DEFAULT_EXPECTED_INSERTIONS));
         return bitMapBloomFilter;
     }
 
@@ -62,7 +64,8 @@ public class BitMapBloomFilterRegistry {
     public BitMapBloomFilter<CharSequence> obtain(String filterName, int expectedInsertions, double fpp) {
         filterName = this.getFilterName(filterName);
         Funnel<CharSequence>            funnel            = (Funnel<CharSequence>) Funnels.stringFunnel(Charset.defaultCharset());
-        BitMapBloomFilter<CharSequence> bitMapBloomFilter = filters.computeIfAbsent(filterName, key -> new BitMapBloomFilter<CharSequence>(redisTemplate, key, funnel, expectedInsertions, fpp));
+        BitMapBloomFilter<CharSequence> bitMapBloomFilter = filters.computeIfAbsent(filterName,
+                key -> new BitMapBloomFilter<CharSequence>(redisTemplate, key, funnel, expectedInsertions, fpp));
         return bitMapBloomFilter;
     }
 
