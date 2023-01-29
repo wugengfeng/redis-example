@@ -1,4 +1,4 @@
-package com.wgf;
+package com.wgf.lock;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

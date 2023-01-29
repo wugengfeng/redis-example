@@ -56,7 +56,7 @@ public class StockController {
             executorService.execute(task);
         }
 
-        // 测试最终结果： 库存数量还有1的时候，多个线程下单数量为1下单失败，库存数量不能准确控制
+        // 测试最终结果： 存在库存遗留问题，当库存为1时，下单永远失败
     }
 
 
@@ -149,6 +149,8 @@ public class StockController {
         for (int i = 0; i < 3000; i++) {
             executorService.execute(task);
         }
+
+        // 测试最终结果： 执行效率高，解决库存遗留问题
     }
 
 

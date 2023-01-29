@@ -1,4 +1,4 @@
-package com.wgf;
+package com.wgf.filter;
 
 import com.wgf.filter.bloom.RedisBloomFilter;
 import com.wgf.filter.registry.BloomFilterRegistry;
