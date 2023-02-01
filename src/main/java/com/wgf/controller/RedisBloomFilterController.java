@@ -58,7 +58,7 @@ public class RedisBloomFilterController {
     @GetMapping("exists")
     public boolean exists(@RequestParam("item") Object item) {
         RedisBloomFilter redisBloomFilter = bloomFilterRegistry.getFilter(filterName);
-        return redisBloomFilter.exists("test");
+        return redisBloomFilter.exists(item);
     }
 
 

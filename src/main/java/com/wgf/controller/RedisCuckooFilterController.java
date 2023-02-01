@@ -57,7 +57,7 @@ public class RedisCuckooFilterController {
     @GetMapping("exists")
     public boolean exists(@RequestParam("item") Object item) {
         RedisCuckooFilter cuckooFilter = cuckooFilterRegistry.getFilter(filterName);
-        return cuckooFilter.exists("test");
+        return cuckooFilter.exists(item);
     }
 
 
@@ -66,6 +66,6 @@ public class RedisCuckooFilterController {
     @GetMapping("del")
     public boolean del(@RequestParam("item") Object item) {
         RedisCuckooFilter cuckooFilter = cuckooFilterRegistry.getFilter(filterName);
-        return cuckooFilter.del("test");
+        return cuckooFilter.del(item);
     }
 }

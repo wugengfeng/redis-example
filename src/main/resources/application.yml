@@ -1,7 +1,7 @@
 # 单机模式配置
 spring:
   redis:
-    host: 127.0.0.1  # IP
+    host: localhost  # IP
     port: 6379  # 端口号
     password: wgf123  # 密码
     timeout: 10000
